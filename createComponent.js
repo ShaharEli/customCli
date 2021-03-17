@@ -25,26 +25,34 @@ const createComponent = async (name, options) => {
 
   if (generateStyle) {
     const spinner = ora(`Making ${name} directory`).start();
-    mkdirSync(componentPath);
-    spinner.text = "Loading style file";
-    const styleFile = readFileSync(componentsConfig + "/styles.js");
-    spinner.text = "Loading component file";
-    const styledComponentsFile = readFileSync(
-      componentsConfig + "/componentWithStyles.js"
-    );
-    spinner.text = "Writing style file";
-    writeFileSync(componentPath + "/styles.js", styleFile);
-    spinner.text = "Writing component file";
-    writeFileSync(componentPath + `/${name}.js`, styledComponentsFile);
-    spinner.succeed();
+    try {
+      mkdirSync(componentPath);
+      spinner.text = "Loading style file";
+      const styleFile = readFileSync(componentsConfig + "/styles.js");
+      spinner.text = "Loading component file";
+      const styledComponentsFile = readFileSync(
+        componentsConfig + "/componentWithStyles.js"
+      );
+      spinner.text = "Writing style file";
+      writeFileSync(componentPath + "/styles.js", styleFile);
+      spinner.text = "Writing component file";
+      writeFileSync(componentPath + `/${name}.js`, styledComponentsFile);
+      spinner.succeed();
+    } catch {
+      spinner.fail();
+    }
   } else {
     const spinner2 = ora(`Loading component file`).start();
-    const componentFile = readFileSync(
-      componentsConfig + "/componentWithoutStyles.js"
-    );
-    spinner2.text = "Writing component file";
-    writeFileSync(componentsPath + `/${name}.js`, componentFile);
-    spinner2.succeed();
+    try {
+      const componentFile = readFileSync(
+        componentsConfig + "/componentWithoutStyles.js"
+      );
+      spinner2.text = "Writing component file";
+      writeFileSync(componentsPath + `/${name}.js`, componentFile);
+      spinner2.succeed();
+    } catch {
+      spinner.fail();
+    }
   }
 };
 

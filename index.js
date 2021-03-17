@@ -2,9 +2,9 @@ const inquirer = require("inquirer");
 const createComponent = require("./createComponent");
 const pwd = process.cwd();
 const argv = process.argv.slice(2);
-console.log(argv);
 
-const cli = async () => {
+const cli = async (allArgs) => {
+  const argv = allArgs.slice(2);
   if (argv[0] === "cc") {
     if (argv[1]) {
       const [_, componentName, ...rest] = argv;
@@ -23,4 +23,4 @@ const cli = async () => {
   }
 };
 
-cli();
+module.exports = { cli };

@@ -7,10 +7,18 @@
     "start": "node .",
     "dev": "nodemon ."
   },
-  "keywords": [],
+  "bin": {
+    "@shahar12345/gcg": "bin/gcg",
+    "gcg": "bin/gcg"
+  },
+  "keywords": [
+    "cli",
+    "generator"
+  ],
   "author": "Shahar Eliyahu",
   "license": "MIT",
   "dependencies": {
+    "esm": "^3.2.25",
     "inquirer": "^8.0.0",
     "listr": "^0.14.3",
     "ora": "^5.4.0"
@@ -19,6 +27,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ShaharEli/customCli.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "bugs": {
     "url": "https://github.com/ShaharEli/customCli/issues"
