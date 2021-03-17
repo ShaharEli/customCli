@@ -1,6 +1,6 @@
-# gcli
+# gicli
 
 <h2> commands:</h2>
 
-run <code>gcli cc</code> to generate component <br/>
-run <code>gcli cc -s</code> to generate component with styles
+run <code>gicli cc</code> to generate component <br/>
+run <code>gicli cc -s</code> to generate component with styles
