@@ -1,12 +1,11 @@
-import React from "react";
-import { View, Text } from "react-native";
-import PropTypes from "prop-types";
-import styles from "./styles";
+import React from 'react';
+import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 const Component = () => {
   return (
     <View>
-      <Text></Text>
+      <Text />
     </View>
   );
 };

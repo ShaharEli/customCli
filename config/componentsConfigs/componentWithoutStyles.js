@@ -1,13 +1,12 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import PropTypes from "prop-types";
-
-const styles = StyleSheet.create({});
+import React from 'react';
+import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import styles from './styles';
 
 const Component = () => {
   return (
     <View>
-      <Text></Text>
+      <Text />
     </View>
   );
 };
