@@ -1,13 +1,18 @@
 const path = require("path");
 const pwd = process.cwd();
+const currenpathurl = new URL(import.meta.url).pathname;
 const componentsPath = path.resolve(pwd, "src", "components");
-const componentsConfig = path.resolve("config", "componentsConfigs");
+const componentsConfig = path.resolve(
+  currenpathurl,
+  "..",
+  "config",
+  "componentsConfigs"
+);
 const inquirer = require("inquirer");
 const { readFileSync, writeFileSync, mkdirSync } = require("fs");
 const ora = require("ora");
 
 const createComponent = async (name, options) => {
-  console.log(name, options);
   const componentPath = path.join(componentsPath, name);
   let generateStyle = !options.includes("-s");
   if (generateStyle) {
@@ -38,7 +43,8 @@ const createComponent = async (name, options) => {
       spinner.text = "Writing component file";
       writeFileSync(componentPath + `/${name}.js`, styledComponentsFile);
       spinner.succeed();
-    } catch {
+    } catch ({ message }) {
+      spinner.text = message;
       spinner.fail();
     }
   } else {
@@ -50,7 +56,8 @@ const createComponent = async (name, options) => {
       spinner2.text = "Writing component file";
       writeFileSync(componentsPath + `/${name}.js`, componentFile);
       spinner2.succeed();
-    } catch {
+    } catch ({ message }) {
+      spinner.text = message;
       spinner.fail();
     }
   }
